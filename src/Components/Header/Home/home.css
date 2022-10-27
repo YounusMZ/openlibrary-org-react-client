@@ -1,0 +1,9 @@
+﻿.Home{
+    display: flex;
+    flex-direction: column;
+}
+
+.sideBar {
+    display: flex;
+    flex-direction: row;
+}

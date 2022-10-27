@@ -1,0 +1,27 @@
+﻿.Trending-books {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 50px;
+
+    margin: 100px 100px 0px 100px;
+    justify-content: space-between;
+}
+
+.trending-images {
+    height: 35vh;
+    width: 10vw;
+}
+    .trending-images:hover {
+        transition-duration: 0.05s;
+        transform: scale(0.96, 0.96);
+    }
+
+.bookName {
+    color: white;
+    font-size: 20px;
+    width: 10vw;
+}
+    .bookName:hover {
+        transition-duration: 0.1s;
+        transform: scale(0.96, 0.96);
+    }

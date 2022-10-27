@@ -1,0 +1,37 @@
+﻿.App-body {
+    display: flex;
+    flex-direction: column;
+}
+
+#heading {
+    color: #3369a4;
+    margin-left: 50px;
+}
+
+.App-header {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.navbar {
+    display: inherit;
+    flex-direction: inherit;
+    margin-right: 50px;
+    background-color: white;
+}
+
+.navButton {
+    width: 100px;
+    border: none;
+    font-size: 20px;
+    background-color: white;
+    color: #3369a4
+}
+    .navButton:hover {
+        transition-duration: 0.05s;
+        color: #143151;
+        background: linear-gradient(white 20%, #bcd1e8 40%, #bcd1e8 60%, white 80%);
+        transform: scale(0.96, 0.96);
+    }
