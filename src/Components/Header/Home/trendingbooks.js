@@ -10,27 +10,16 @@ async function fetchTrending(url) {
         .then(data => data)
 }
 
-function getBookNames(books, limit) {
+
+function getBookProperty(books, limit, property) {
     let bookNames = []
     if (books) {
         for (let index = 0; index <= limit; index++) {
-            bookNames.push(books.works[index].title)
+            bookNames.push(books.works[index][property])
         }
     }
 
     return bookNames
-}
-
-function getBookImages(books, limit) {
-    let keys = []
-
-    if (books) {
-        for (let index = 0; index <= limit; index++) {
-            keys.push(books.works[index].cover_edition_key)
-        }
-
-        return keys
-    }
 }
 
 class Trending extends React.Component{
@@ -38,7 +27,6 @@ class Trending extends React.Component{
         super(props)
         this.getBooksLimit = 7;
         this.trendingUrl = "https://openlibrary.org/trending/daily.json";
-        this.bookUrl = "https://openlibrary.org/api/books?"
         this.state = {
             "imagelist": [],
         }
@@ -52,8 +40,8 @@ class Trending extends React.Component{
         let fetchedJSON = await fetchTrending(this.trendingUrl);
         console.log("fetching", fetchedJSON);
 
-        let images = getBookImages(fetchedJSON, this.getBooksLimit);
-        let bookNames = getBookNames(fetchedJSON, this.getBooksLimit);
+        let bookNames = getBookProperty(fetchedJSON, this.getBooksLimit, 'title');
+        let images = getBookProperty(fetchedJSON, this.getBooksLimit, 'cover_edition_key');
 
         this.setState({
             "imagelist": this.getItems(images, bookNames)
@@ -66,12 +54,14 @@ class Trending extends React.Component{
         let index = -1;
         let test = bookImages.map((key) => {
             index += 1;
-            let imageURL = "https://covers.openlibrary.org/b" + `/olid` + `/${key}` + `-M` + ".jpg";
+            let bookName = bookNames.at(index);
+            let imageURL = `https://covers.openlibrary.org/b/olid/${key}-M.jpg`;
+            let bookURL = `https://openlibrary.org/works/${key}/${bookName}`;
             return (
-                <div className="trending-generated-items">
-                    <img className="trending-images" key={key} alt={bookNames.at(index)} height="350px" width="180px" src={imageURL} onClick="" />
-                    <p className="bookName" onClick="">
-                        {bookNames.at(index)}
+                <div key={key + "div"}>
+                    <img className="trending-images" key={key} alt={bookName} src={imageURL} onClick={() => window.open(bookURL)} />  
+                    <p className="bookName" key={bookNames.at(index)} onClick={() => window.open(bookURL)}>
+                        {bookName}
                     </p>
                 </div>
             )
@@ -83,8 +73,13 @@ class Trending extends React.Component{
 
     render() { 
         return (
-            <div className="Trending-books">
-                {this.state.imagelist}
+            <div>
+                <div className="Trending">
+                    <h2 id="Trending-heading">Trending Books</h2>
+                </div>
+                <div className="Trending-books">
+                    {this.state.imagelist}
+                </div>
             </div>
         )
     }

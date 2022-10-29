@@ -4,7 +4,7 @@
 }
 
 #heading {
-    color: #3369a4;
+    color: #ffffff;
     margin-left: 50px;
 }
 
@@ -13,25 +13,57 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    background: linear-gradient(90deg, rgb(30, 35, 101), rgb(63, 72, 204) 60%);
 }
 
 .navbar {
     display: inherit;
     flex-direction: inherit;
     margin-right: 50px;
-    background-color: white;
+    background-color: rgb(63, 72, 204);
 }
 
 .navButton {
     width: 100px;
     border: none;
     font-size: 20px;
-    background-color: white;
-    color: #3369a4
+    background-color: rgb(63, 72, 204);
+    color: #ffffff;
+    cursor: pointer;
 }
     .navButton:hover {
-        transition-duration: 0.05s;
-        color: #143151;
-        background: linear-gradient(white 20%, #bcd1e8 40%, #bcd1e8 60%, white 80%);
-        transform: scale(0.96, 0.96);
+        transition-duration: 0.1s;
+        color: rgb(115, 122, 224);
+        transform: scale(0.99, 0.99);
     }
+
+
+@media only screen and (max-width: 720px) {
+
+    .App-header {
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background: linear-gradient(90deg, rgb(30, 35, 101), rgb(63, 72, 204) 50%);
+    }
+
+    .navbar{
+        margin-right: 10px;
+    }
+
+    #heading {
+        color: #ffffff;
+        font-size: 18px;
+        margin-left: 10px;
+    }
+
+    .navButton {
+        width: 15vw;
+        border: none;
+        font-size: 15px;
+        background-color: rgb(63, 72, 204);
+        color: #ffffff;
+        cursor: pointer;
+    }
+}

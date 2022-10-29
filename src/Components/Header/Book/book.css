@@ -1,0 +1,19 @@
+﻿.pageButtons-div{
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    margin-left: 50px;
+    justify-content: space-between;
+}
+
+.pageButtons { 
+    border: none;
+    background-color: rgb(63, 72, 204);
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+}
+
+    .pageButtons:hover {
+        background-color: rgb(67, 78, 234);
+    }
