@@ -1,12 +1,11 @@
-import './header.css'
-import Home from './Home/home.js'
+import './appmain.css'
+import Home from '../Home/home.js'
 import React from 'react'
 
 function NavBar(props) {
     return (
         <div className="navbar">
             <button className="navButton" onClick={props.homeClick}>Home</button>
-            <button className="navButton" onClick={props.aboutClick}>About</button>
         </div>
     )
 }
@@ -21,7 +20,6 @@ class Body extends React.Component {
             "search" : false,
         }
         this.homeClicked.bind(this)
-        this.aboutClicked.bind(this)
     }
 
     homeClicked = () => {
@@ -32,12 +30,6 @@ class Body extends React.Component {
     }
     
 
-    aboutClicked = () => {
-        this.setState({
-            "selected": "about",
-        })
-        console.log("about clicked")
-    }
 
     render(){
         return (
@@ -47,7 +39,7 @@ class Body extends React.Component {
                     <NavBar homeClick={this.homeClicked} aboutClick={this.aboutClicked}/>
                 </div>
                 <div>
-                    {this.state.selected === "home" ? <Home /> : <></> }
+                    <Home />
                 </div>
             </div>
         )

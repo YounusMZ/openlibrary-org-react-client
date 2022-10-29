@@ -29,24 +29,6 @@ function Book(props) {
     const [result, setResult] = useState();
     const [pageNumber, setPageNumber] = useState(0);
 
-    const getItems = (bookImages, bookNames) => {
-        let index = -1;
-        let test = bookImages.map((key) => {
-            index += 1;
-            let bookName = bookNames.at(index);
-            let imageURL = `https://covers.openlibrary.org/b/olid/${key}-M.jpg`;
-            let bookURL = `https://openlibrary.org/works/${key}/${bookName}`;
-            return (
-                <div key={ key + "div" }>
-                    <img key={key} className="trending-images" alt={bookName} src={imageURL} onClick={() => window.open(bookURL)} />
-                    <p className="bookName" onClick={() => window.open(bookURL)}>
-                        {bookName}
-                    </p>
-                </div>
-            )
-        })
-        return test;
-    }
 
     const backClicked = () => {
         if ((pageNumber - 8) >= 0) {
@@ -62,14 +44,34 @@ function Book(props) {
     }
 
     useEffect(() => {
-
         const currentBook = props.currentBook;
         const bookAPIAccess = new URL("https://openlibrary.org/search.json?");
         const currentBookSplit = currentBook.replace(" ", "+");
-        let bookAPIAccessParams = new URLSearchParams(bookAPIAccess.search)
+        const bookAPIAccessParams = new URLSearchParams(bookAPIAccess.search)
 
         bookAPIAccessParams.set("title", currentBookSplit)
         bookAPIAccess.search = bookAPIAccessParams;
+
+
+        const getItems = (bookImages, bookNames) => {
+            let index = -1;
+            let test = bookImages.map((key) => {
+                index += 1;
+                let bookName = bookNames.at(index);
+                let imageURL = `https://covers.openlibrary.org/b/olid/${key}-M.jpg`;
+                let bookURL = `https://openlibrary.org/works/${key}/${bookName}`;
+                return (
+                    <div key={key + "div"}>
+                        <img key={key} className="trending-images" alt={bookName} src={imageURL} onClick={() => window.open(bookURL)} onMouseEnter={() => props.bookInfoClick(bookName, imageURL)} />
+                        <p className="bookName" onClick={() => window.open(bookURL)}>
+                            {bookName}
+                        </p>
+                    </div>
+                )
+            })
+
+            return test;
+        }
 
         const fetchBook = async (url) => {
             let fetched = await fetchContent(url);
@@ -82,8 +84,7 @@ function Book(props) {
         }
 
         fetchBook(bookAPIAccess)
-
-    }, [props.currentBook, pageNumber])
+    }, [props, pageNumber])
 
 
     return (

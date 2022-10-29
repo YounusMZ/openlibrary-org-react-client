@@ -38,15 +38,12 @@ class Trending extends React.Component{
 
     fetchImage = async () => {
         let fetchedJSON = await fetchTrending(this.trendingUrl);
-        console.log("fetching", fetchedJSON);
 
         let bookNames = getBookProperty(fetchedJSON, this.getBooksLimit, 'title');
         let images = getBookProperty(fetchedJSON, this.getBooksLimit, 'cover_edition_key');
 
         this.setState({
             "imagelist": this.getItems(images, bookNames)
-        }, () => {
-            console.log(this.state.imagelist)
         })
     }
 
@@ -59,13 +56,14 @@ class Trending extends React.Component{
             let bookURL = `https://openlibrary.org/works/${key}/${bookName}`;
             return (
                 <div key={key + "div"}>
-                    <img className="trending-images" key={key} alt={bookName} src={imageURL} onClick={() => window.open(bookURL)} />  
+                    <img className="trending-images" key={key} alt={bookName} src={imageURL} onClick={() => window.open(bookURL)} onMouseEnter={() => this.props.bookInfoClick(bookName, imageURL)} />  
                     <p className="bookName" key={bookNames.at(index)} onClick={() => window.open(bookURL)}>
                         {bookName}
                     </p>
                 </div>
             )
         })
+
         return test;
     }
     
@@ -84,6 +82,5 @@ class Trending extends React.Component{
         )
     }
 }
-
 
 export default Trending;
