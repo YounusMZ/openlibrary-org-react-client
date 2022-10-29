@@ -66,8 +66,6 @@ class Trending extends React.Component{
 
         return test;
     }
-    
-
 
     render() { 
         return (
