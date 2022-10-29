@@ -16,27 +16,6 @@
     background: linear-gradient(90deg, rgb(30, 35, 101), rgb(63, 72, 204) 60%);
 }
 
-.navbar {
-    display: inherit;
-    flex-direction: inherit;
-    margin-right: 50px;
-    background-color: rgb(63, 72, 204);
-}
-
-.navButton {
-    width: 100px;
-    border: none;
-    font-size: 20px;
-    background-color: rgb(63, 72, 204);
-    color: #ffffff;
-    cursor: pointer;
-}
-    .navButton:hover {
-        transition-duration: 0.1s;
-        color: rgb(115, 122, 224);
-        transform: scale(0.99, 0.99);
-    }
-
 
 @media only screen and (max-width: 720px) {
 
@@ -48,22 +27,10 @@
         background: linear-gradient(90deg, rgb(30, 35, 101), rgb(63, 72, 204) 50%);
     }
 
-    .navbar{
-        margin-right: 10px;
-    }
-
     #heading {
         color: #ffffff;
         font-size: 18px;
         margin-left: 10px;
     }
 
-    .navButton {
-        width: 15vw;
-        border: none;
-        font-size: 15px;
-        background-color: rgb(63, 72, 204);
-        color: #ffffff;
-        cursor: pointer;
-    }
 }
