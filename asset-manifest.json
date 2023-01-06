@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/openlibrary-org-react-client/static/css/main.2b52a4d0.css",
-    "main.js": "/openlibrary-org-react-client/static/js/main.9c85436a.js",
+    "main.css": "/openlibrary-org-react-client/static/css/main.fef98633.css",
+    "main.js": "/openlibrary-org-react-client/static/js/main.3d8f0d0c.js",
     "static/js/787.b75e1f83.chunk.js": "/openlibrary-org-react-client/static/js/787.b75e1f83.chunk.js",
     "index.html": "/openlibrary-org-react-client/index.html",
-    "main.2b52a4d0.css.map": "/openlibrary-org-react-client/static/css/main.2b52a4d0.css.map",
-    "main.9c85436a.js.map": "/openlibrary-org-react-client/static/js/main.9c85436a.js.map",
+    "main.fef98633.css.map": "/openlibrary-org-react-client/static/css/main.fef98633.css.map",
+    "main.3d8f0d0c.js.map": "/openlibrary-org-react-client/static/js/main.3d8f0d0c.js.map",
     "787.b75e1f83.chunk.js.map": "/openlibrary-org-react-client/static/js/787.b75e1f83.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2b52a4d0.css",
-    "static/js/main.9c85436a.js"
+    "static/css/main.fef98633.css",
+    "static/js/main.3d8f0d0c.js"
   ]
 }
