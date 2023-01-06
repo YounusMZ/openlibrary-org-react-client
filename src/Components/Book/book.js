@@ -11,11 +11,11 @@ async function fetchContent(url) {
 }
 
 function getBookProperty(books, startlimit, endlimit, property) {
-    let bookProperty = []
+    let bookProperty = [];
     if (books) {
         for (let index = startlimit; index <= endlimit; index++) {
             if (books.docs[index][property]) { 
-                bookProperty.push(books.docs[index][property])
+                bookProperty.push(books.docs[index][property]);
             }
         }
     }
@@ -32,14 +32,14 @@ function Book(props) {
 
     const backClicked = () => {
         if ((pageNumber - 8) >= 0) {
-            setPageNumber(pageNumber - 8)
+            setPageNumber(pageNumber - 8);
         }
     }
 
     const nextClicked = () => {
         if (fetchResult != null) {
             if ((pageNumber + 8) < fetchResult.docs.length)
-            setPageNumber(pageNumber + 8)
+                setPageNumber(pageNumber + 8);
         }
     }
 
@@ -62,7 +62,7 @@ function Book(props) {
                 let bookURL = `https://openlibrary.org/works/${key}/${bookName}`;
                 return (
                     <div key={key + "div"}>
-                        <img key={key} className="trending-images" alt={bookName} src={imageURL} onClick={() => window.open(bookURL)} onMouseEnter={() => props.bookInfoClick(bookName, imageURL)} />
+                        <img key={key} className="trending-images" alt={bookName} src={imageURL} onClick={() => window.open(bookURL)} />
                         <p className="bookName" onClick={() => window.open(bookURL)}>
                             {bookName}
                         </p>
@@ -83,7 +83,7 @@ function Book(props) {
             setFetched(fetched)
         }
 
-        fetchBook(bookAPIAccess)
+        fetchBook(bookAPIAccess);
     }, [props, pageNumber])
 
 

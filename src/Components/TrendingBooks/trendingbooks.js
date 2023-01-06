@@ -12,10 +12,10 @@ async function fetchTrending(url) {
 
 
 function getBookProperty(books, limit, property) {
-    let bookNames = []
+    let bookNames = [];
     if (books) {
         for (let index = 0; index <= limit; index++) {
-            bookNames.push(books.works[index][property])
+            bookNames.push(books.works[index][property]);
         }
     }
 
@@ -33,7 +33,7 @@ class Trending extends React.Component{
     }
 
     componentDidMount() {
-        this.fetchImage()
+        this.fetchImage();
     }
 
     fetchImage = async () => {
@@ -56,7 +56,7 @@ class Trending extends React.Component{
             let bookURL = `https://openlibrary.org/works/${key}/${bookName}`;
             return (
                 <div key={key + "div"}>
-                    <img className="trending-images" key={key} alt={bookName} src={imageURL} onClick={() => window.open(bookURL)} onMouseEnter={() => this.props.bookInfoClick(bookName, imageURL)} />  
+                    <img className="trending-images" key={key} alt={bookName} src={imageURL} onClick={() => window.open(bookURL)} />  
                     <p className="bookName" key={bookNames.at(index)} onClick={() => window.open(bookURL)}>
                         {bookName}
                     </p>
