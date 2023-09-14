@@ -55,7 +55,7 @@ class Trending extends React.Component{
             let imageURL = `https://covers.openlibrary.org/b/olid/${key}-M.jpg`;
             let bookURL = `https://openlibrary.org/works/${key}/${bookName}`;
             return (
-                <div key={key + "div"}>
+                <div className="Trending-books-individual" key={key + "div"}>
                     <img className="trending-images" key={key} alt={bookName} src={imageURL} onClick={() => window.open(bookURL)} />  
                     <p className="bookName" key={bookNames.at(index)} onClick={() => window.open(bookURL)}>
                         {bookName}

@@ -21,7 +21,7 @@ function Home() {
                     <input type="text" id="sideBar-search" placeholder="Search Books" />
                     <button id="sideBar-button" onClick={onBookSearchClick}>Search!</button>
                 </div>
-                <h2 className="sideBar-heading" onClick={() => { setBook("trending") }} >Trending Books</h2>
+                <h2 id="sideBar-heading" onClick={() => { setBook("trending") }} >Trending Books</h2>
             </div>
         </div>
     )

@@ -4,16 +4,15 @@
 }
 
 #heading {
-    color: #ffffff;
+    color: #000000;
     margin-left: 50px;
 }
 
 .App-header {
-    background-color: #ffffff;
+    background-color: #f8f8f8;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background: rgb(30, 35, 101);
 }
 
 

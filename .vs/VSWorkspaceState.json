@@ -1,6 +1,13 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\Components",
+    "\\src\\Components\\AppMain",
+    "\\src\\Components\\Book",
+    "\\src\\Components\\Home",
+    "\\src\\Components\\TrendingBooks"
   ],
+  "SelectedNode": "\\package.json",
   "PreviewInSolutionExplorer": false
 }
