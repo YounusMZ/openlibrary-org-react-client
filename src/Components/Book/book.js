@@ -54,15 +54,13 @@ function Book(props) {
 
 
         const getItems = (bookImages, bookNames) => {
-            let index = -1;
-            let test = bookImages.map((key) => {
-                index += 1;
+            let test = bookImages.map((id, index) => {
                 let bookName = bookNames.at(index);
-                let imageURL = `https://covers.openlibrary.org/b/olid/${key}-M.jpg`;
-                let bookURL = `https://openlibrary.org/works/${key}/${bookName}`;
+                let imageURL = `https://covers.openlibrary.org/b/olid/${id}-M.jpg`;
+                let bookURL = `https://openlibrary.org/works/${id}/${bookName}`;
                 return (
-                    <div key={key + "div"}>
-                        <img key={key} className="trending-images" alt={bookName} src={imageURL} onClick={() => window.open(bookURL)} />
+                    <div className="Trending-books-individual" key={id + "div"}>
+                        <img key={id} className="trending-images" alt={bookName} src={imageURL} onClick={() => window.open(bookURL)} />
                         <p className="bookName" onClick={() => window.open(bookURL)}>
                             {bookName}
                         </p>

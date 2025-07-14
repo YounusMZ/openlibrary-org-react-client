@@ -1,7 +1,7 @@
 ﻿.Home {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .sideBar {
@@ -9,7 +9,6 @@
     flex-direction: column;
     background-color: #ffffff;
     border-left: 1px solid rgb(31, 31, 31);
-    margin: 0px 100px 0px 50px;
 }
 
 .search {

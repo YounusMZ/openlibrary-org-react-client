@@ -2,12 +2,17 @@ import React from 'react'
 import './trendingbooks.css'
 
 async function fetchTrending(url) {
+    console.log("started")
     return fetch(url, {
             method: 'GET',
             mode: 'cors',
     })
         .then(res => res.json())
-        .then(data => data)
+        .then((data) => {
+            console.log("ended")
+            return data;
+        }
+        )
 }
 
 
@@ -26,7 +31,7 @@ class Trending extends React.Component{
     constructor(props){
         super(props)
         this.getBooksLimit = 7;
-        this.trendingUrl = "https://openlibrary.org/trending/daily.json";
+        this.trendingUrl = "https://openlibrary.org/subjects/fantasy.json";
         this.state = {
             "imagelist": [],
         }
@@ -34,37 +39,37 @@ class Trending extends React.Component{
 
     componentDidMount() {
         this.fetchImage();
+        console.log("mounted");
     }
 
     fetchImage = async () => {
         let fetchedJSON = await fetchTrending(this.trendingUrl);
 
         let bookNames = getBookProperty(fetchedJSON, this.getBooksLimit, 'title');
-        let images = getBookProperty(fetchedJSON, this.getBooksLimit, 'cover_edition_key');
+        let bookId = getBookProperty(fetchedJSON, this.getBooksLimit, 'cover_edition_key');
 
         this.setState({
-            "imagelist": this.getItems(images, bookNames)
+            "imagelist": this.getItems(bookId, bookNames)
         })
     }
 
-    getItems = (bookImages, bookNames) => {
-        let index = -1;
-        let test = bookImages.map((key) => {
-            index += 1;
+
+    getItems = (bookId, bookNames) => {
+        let bookItems = bookId.map((id, index) => {
             let bookName = bookNames.at(index);
-            let imageURL = `https://covers.openlibrary.org/b/olid/${key}-M.jpg`;
-            let bookURL = `https://openlibrary.org/works/${key}/${bookName}`;
+            let imageURL = `https://covers.openlibrary.org/b/olid/${id}-M.jpg`;
+            let bookURL = `https://openlibrary.org/works/${id}/${bookName}`;
             return (
-                <div className="Trending-books-individual" key={key + "div"}>
-                    <img className="trending-images" key={key} alt={bookName} src={imageURL} onClick={() => window.open(bookURL)} />  
-                    <p className="bookName" key={bookNames.at(index)} onClick={() => window.open(bookURL)}>
+                <div className="Trending-books-individual" key={id + "div"}>
+                    <img className="trending-images" key={id} alt={bookName} src={imageURL} onClick={() => window.open(bookURL)} />  
+                    <p className="bookName" key={bookName} onClick={() => window.open(bookURL)}>
                         {bookName}
                     </p>
                 </div>
             )
         })
 
-        return test;
+        return bookItems;
     }
 
     render() { 

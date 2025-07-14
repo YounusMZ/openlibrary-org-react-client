@@ -6,9 +6,9 @@
     justify-content: space-between;
 }
 
-.pageButtons { 
+.pageButtons {
     border: none;
-    background-color: rgb(63, 72, 204);
+    background-color: rgb(156, 162, 239);
     font-size: 15px;
     color: white;
     cursor: pointer;
