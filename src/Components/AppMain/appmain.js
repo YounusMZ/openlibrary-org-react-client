@@ -3,7 +3,7 @@ import Home from '../Home/home.js'
 import React from 'react'
 
 
-class Body extends React.Component {
+class AppMain extends React.Component {
     constructor(props){
         super(props)
         this.siteName = "OpenLibrary";
@@ -14,7 +14,7 @@ class Body extends React.Component {
         return (
             <div className="App-body">
                 <div className="App-header">
-                    <h1 id="heading">{this.siteName}</h1>
+                    <h2 id="heading">{this.siteName}</h2>
                 </div>
                 <div>
                     <Home />
@@ -24,4 +24,4 @@ class Body extends React.Component {
     }
 }
 
-export default Body
+export default AppMain

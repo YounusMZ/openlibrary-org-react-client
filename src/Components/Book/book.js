@@ -1,34 +1,14 @@
 import './book.css'
 import {useState, useEffect } from 'react'
-
-async function fetchContent(url) {
-    return fetch(url, {
-        method: 'GET',
-        mode: 'cors', 
-    })
-        .then(res => res.json())
-        .then(data => data)
-}
-
-function getBookProperty(books, startlimit, endlimit, property) {
-    let bookProperty = [];
-    if (books) {
-        for (let index = startlimit; index <= endlimit; index++) {
-            if (books.docs[index][property]) { 
-                bookProperty.push(books.docs[index][property]);
-            }
-        }
-    }
-
-    return bookProperty
-}
+import { getBookProperty, fetchContent } from './../../util/book';
+import { useLocation } from 'react-router-dom';
 
 
-function Book(props) {
+function Book() {
     const [fetchResult, setFetched] = useState();
     const [result, setResult] = useState();
     const [pageNumber, setPageNumber] = useState(0);
-
+    const state = useLocation().state
 
     const backClicked = () => {
         if ((pageNumber - 8) >= 0) {
@@ -44,7 +24,7 @@ function Book(props) {
     }
 
     useEffect(() => {
-        const currentBook = props.currentBook;
+        const currentBook = state.bookName;
         const bookAPIAccess = new URL("https://openlibrary.org/search.json?");
         const currentBookSplit = currentBook.replace(" ", "+");
         const bookAPIAccessParams = new URLSearchParams(bookAPIAccess.search)
@@ -60,7 +40,7 @@ function Book(props) {
                 let bookURL = `https://openlibrary.org/works/${id}/${bookName}`;
                 return (
                     <div className="Trending-books-individual" key={id + "div"}>
-                        <img key={id} className="trending-images" alt={bookName} src={imageURL} onClick={() => window.open(bookURL)} />
+                        <img key={id} className="trending-images" src={imageURL} onClick={() => window.open(bookURL)} />
                         <p className="bookName" onClick={() => window.open(bookURL)}>
                             {bookName}
                         </p>
@@ -80,13 +60,13 @@ function Book(props) {
             setResult(combined);
             setFetched(fetched)
         }
-
+        
         fetchBook(bookAPIAccess);
-    }, [props, pageNumber])
+    }, [pageNumber])
 
 
     return (
-        <div>
+        <div className="Trending">
             <div className="pageButtons-div">
                 <button className="pageButtons" onClick={() => { backClicked() }}>Back</button>
                 <button className="pageButtons" onClick={() => { nextClicked() }}>Next</button>

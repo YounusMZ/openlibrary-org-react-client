@@ -8,7 +8,7 @@
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
-    border-left: 1px solid rgb(31, 31, 31);
+    border-left: 1px solid rgb(230, 230, 230);
 }
 
 .search {
@@ -18,9 +18,17 @@
 
 #sideBar-search {
     font-size: 16px;
-    border: 1px solid rgb(204, 204, 204);
+    border: 1px solid rgb(240, 240, 240);
     margin-left: 1px;
 }
+
+    #sideBar-search:focus{
+        border: 1px solid rgb(100, 100, 100);
+        outline: none;
+    }
+    #sideBar-search:hover{
+        background-color: rgb(250, 250, 250);
+    }
 
 #sideBar-button {
     font-size: 16px;
@@ -31,18 +39,18 @@
 
     #sideBar-button:hover {
         transform: scale(0.99, 0.99);
-        background-color: #d8d8d8;
+        background-color: rgb(250, 250, 250);
     }
 
 #sideBar-heading {
-    color: #7f7f7f;
-    font-size: 20px;
+    color: rgb(140, 140, 140);
+    font-size: 16px;
     text-align: center;
     cursor: pointer;
 }
     #sideBar-heading:hover {
         transition-duration: 0.1s;  
-        color: rgb(115, 122, 224);
+        color: rgb(120, 120, 120);
         transform: scale(0.99, 0.99);
     }
 

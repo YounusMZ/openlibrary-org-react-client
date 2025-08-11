@@ -1,31 +1,8 @@
 import React from 'react'
 import './trendingbooks.css'
+import './../../util/book'
+import { fetchContent, getTrendingBooksProperty } from './../../util/book';
 
-async function fetchTrending(url) {
-    console.log("started")
-    return fetch(url, {
-            method: 'GET',
-            mode: 'cors',
-    })
-        .then(res => res.json())
-        .then((data) => {
-            console.log("ended")
-            return data;
-        }
-        )
-}
-
-
-function getBookProperty(books, limit, property) {
-    let bookNames = [];
-    if (books) {
-        for (let index = 0; index <= limit; index++) {
-            bookNames.push(books.works[index][property]);
-        }
-    }
-
-    return bookNames
-}
 
 class Trending extends React.Component{
     constructor(props){
@@ -43,10 +20,10 @@ class Trending extends React.Component{
     }
 
     fetchImage = async () => {
-        let fetchedJSON = await fetchTrending(this.trendingUrl);
+        let fetchedJSON = await fetchContent(this.trendingUrl);
 
-        let bookNames = getBookProperty(fetchedJSON, this.getBooksLimit, 'title');
-        let bookId = getBookProperty(fetchedJSON, this.getBooksLimit, 'cover_edition_key');
+        let bookNames = getTrendingBooksProperty(fetchedJSON, this.getBooksLimit, 'title');
+        let bookId = getTrendingBooksProperty(fetchedJSON, this.getBooksLimit, 'cover_edition_key');
 
         this.setState({
             "imagelist": this.getItems(bookId, bookNames)
@@ -61,7 +38,7 @@ class Trending extends React.Component{
             let bookURL = `https://openlibrary.org/works/${id}/${bookName}`;
             return (
                 <div className="Trending-books-individual" key={id + "div"}>
-                    <img className="trending-images" key={id} alt={bookName} src={imageURL} onClick={() => window.open(bookURL)} />  
+                    <img className="trending-images" key={id} src={imageURL} onClick={() => window.open(bookURL)} />  
                     <p className="bookName" key={bookName} onClick={() => window.open(bookURL)}>
                         {bookName}
                     </p>
@@ -74,8 +51,8 @@ class Trending extends React.Component{
 
     render() { 
         return (
-            <div>
-                <div className="Trending">
+            <div className="Trending">
+                <div>
                     <h2 id="Trending-heading">Trending Books</h2>
                 </div>
                 <div className="Trending-books">
