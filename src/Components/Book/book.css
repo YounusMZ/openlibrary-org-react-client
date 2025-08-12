@@ -1,19 +1,26 @@
 ﻿.pageButtons-div{
     display: flex;
     flex-direction: row;
-    margin-top: 50px;
-    margin-left: 50px;
+    margin-top: 3vw;
+    margin-left: 3vw;
     justify-content: space-between;
 }
 
 .pageButtons {
     border: none;
-    background-color: rgb(156, 162, 239);
+    background-color: rgb(80, 80, 80);
     font-size: 15px;
     color: white;
     cursor: pointer;
 }
 
     .pageButtons:hover {
-        background-color: rgb(67, 78, 234);
+    background-color: rgb(40, 40, 40);
     }
+
+@media only screen and (max-width: 720px) {
+    .pageButtons-div{
+        margin-right: 3vw;
+        margin-left: 2vw;
+    }
+}

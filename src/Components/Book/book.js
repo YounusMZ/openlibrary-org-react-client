@@ -39,8 +39,8 @@ function Book() {
                 let imageURL = `https://covers.openlibrary.org/b/olid/${id}-M.jpg`;
                 let bookURL = `https://openlibrary.org/works/${id}/${bookName}`;
                 return (
-                    <div className="Trending-books-individual" key={id + "div"}>
-                        <img key={id} className="trending-images" src={imageURL} onClick={() => window.open(bookURL)} />
+                    <div className="books-individual" key={id + "div"}>
+                        <img key={id} className="images" src={imageURL} onClick={() => window.open(bookURL)} />
                         <p className="bookName" onClick={() => window.open(bookURL)}>
                             {bookName}
                         </p>
@@ -66,12 +66,12 @@ function Book() {
 
 
     return (
-        <div className="Trending">
+        <div className="top-book-container">
             <div className="pageButtons-div">
                 <button className="pageButtons" onClick={() => { backClicked() }}>Back</button>
                 <button className="pageButtons" onClick={() => { nextClicked() }}>Next</button>
             </div>
-            <div className="Trending-books" >
+            <div className="books" >
                 {result}
             </div>
         </div>

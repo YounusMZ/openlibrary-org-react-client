@@ -1,7 +1,7 @@
 import './appmain.css'
 import Home from '../Home/home.js'
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 
 class AppMain extends React.Component {
     constructor(props){
@@ -14,7 +14,9 @@ class AppMain extends React.Component {
         return (
             <div className="App-body">
                 <div className="App-header">
-                    <h2 id="heading">{this.siteName}</h2>
+                    <Link to="/" style={{textDecoration: 'none'}}>
+                        <h2 id="app-heading">{this.siteName}</h2>
+                    </Link>
                 </div>
                 <div>
                     <Home />

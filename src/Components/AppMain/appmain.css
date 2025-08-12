@@ -3,9 +3,9 @@
     flex-direction: column;
 }
 
-#heading {
-    color: rgb(50, 50, 50);
-    margin-left: 50px;
+#app-heading {
+    color: rgb(30, 30, 30);
+    margin-left: 2vw;
 }
 
 .App-header {
@@ -17,19 +17,8 @@
 
 
 @media only screen and (max-width: 720px) {
-
-    .App-header {
-        background-color: #ffffff;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        background: linear-gradient(90deg, rgb(30, 35, 101), rgb(63, 72, 204) 50%);
+    #app-heading {  
+        margin-left: 5vw;
+        font-size: 20px;
     }
-
-    #heading {
-        color: #ffffff;
-        font-size: 18px;
-        margin-left: 10px;
-    }
-
 }

@@ -8,21 +8,29 @@ import { Link, Outlet, useNavigate } from 'react-router-dom';
 function Home() { 
     const navigate = useNavigate();
 
-    const onBookSearchClick = () => {
+    const searchBook = () => {
         let searchText = document.getElementById("sideBar-search");
         navigate("/book", {state : {bookName : searchText.value}})
     }
 
+    const onSearchClick = () => {
+        searchBook()
+    }
+
+    const onSearchEnterPress = (event) => {
+        if (event.key == "Enter"){
+            searchBook()
+        }
+    }
 
     return (
         <div className="Home">
             <Outlet />
             <div className="sideBar">
                 <div className="search">
-                    <input type="text"  id="sideBar-search" placeholder="Search" />
-                    <input type="image" id="sideBar-button" src={SearchIcon} onClick={onBookSearchClick}/>
+                    <input type="text"  id="sideBar-search" placeholder="Search" onKeyUp={(event) => onSearchEnterPress(event)}/>
+                    <input type="image" id="sideBar-button" src={SearchIcon} onClick={onSearchClick}/>
                 </div>
-                <h2 id="sideBar-heading">Trending Books</h2>
             </div>
         </div>
     )

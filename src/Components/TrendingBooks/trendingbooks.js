@@ -37,8 +37,8 @@ class Trending extends React.Component{
             let imageURL = `https://covers.openlibrary.org/b/olid/${id}-M.jpg`;
             let bookURL = `https://openlibrary.org/works/${id}/${bookName}`;
             return (
-                <div className="Trending-books-individual" key={id + "div"}>
-                    <img className="trending-images" key={id} src={imageURL} onClick={() => window.open(bookURL)} />  
+                <div className="books-individual" key={id + "div"}>
+                    <img className="images" key={id} src={imageURL} onClick={() => window.open(bookURL)} />  
                     <p className="bookName" key={bookName} onClick={() => window.open(bookURL)}>
                         {bookName}
                     </p>
@@ -51,11 +51,11 @@ class Trending extends React.Component{
 
     render() { 
         return (
-            <div className="Trending">
+            <div className="top-book-container">
                 <div>
-                    <h2 id="Trending-heading">Trending Books</h2>
+                    <h2 id="book-heading">Trending Books</h2>
                 </div>
-                <div className="Trending-books">
+                <div className="books">
                     {this.state.imagelist}
                 </div>
             </div>
