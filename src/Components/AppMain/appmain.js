@@ -1,11 +1,11 @@
-import './appmain.css'
-import Home from '../Home/home.js'
-import React from 'react'
-import { Link } from 'react-router-dom'
+import './appmain.css';
+import Home from '../Home/home.js';
+import React from 'react';
+import { Link } from 'react-router';
 
 class AppMain extends React.Component {
     constructor(props){
-        super(props)
+        super(props);
         this.siteName = "OpenLibrary";
     }
 
@@ -26,4 +26,4 @@ class AppMain extends React.Component {
     }
 }
 
-export default AppMain
+export default AppMain;

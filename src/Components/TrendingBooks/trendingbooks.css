@@ -1,34 +1,31 @@
 ﻿.books {
     display: grid;
     grid-template-columns: repeat(4, auto);
-    grid-column-gap: 2vw;
+    grid-column-gap: 5vw;
     grid-row-gap: 1vh;
-    margin: 3vh 0vw 0vh 1vw;
+    margin: 5vh 0vw 0vh 8vw;
 }
 
-.top-book-container {
+.book-list-container {
     width: 70vw;  
 }
 
 .books-individual {
     display: flex;
     flex-direction: column;
-    align-items: center;
     max-width: 12vw;
-    margin-left: 5vw;
 }
 
-#book-heading {
+#book-list-heading {
     color: #4a4a4a;
     font-size: 20px;
     text-align: center;
-    margin-left: 7vw;
+    margin-left: 5vw;
 }
 
 .images {
     height: 25vh;
     width: 8vw;
-    align-content:center;
     cursor: pointer;
 }
     .images:hover {
@@ -40,6 +37,7 @@
     color: rgb(30, 36, 51);
     font-size: 20px;
     cursor: pointer;
+    max-width: 10vw;
 }
     .bookName:hover {
         transition-duration: 0.1s;

@@ -1,14 +1,14 @@
-import './book.css'
-import {useState, useEffect } from 'react'
+import './book.css';
+import {useState, useEffect } from 'react';
 import { getBookProperty, fetchContent } from './../../util/book';
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router';
 
 
 function Book() {
     const [fetchResult, setFetched] = useState();
     const [result, setResult] = useState();
     const [pageNumber, setPageNumber] = useState(0);
-    const state = useLocation().state
+    const bookName = useLocation().state?.bookName;
 
     const backClicked = () => {
         if ((pageNumber - 8) >= 0) {
@@ -24,12 +24,12 @@ function Book() {
     }
 
     useEffect(() => {
-        const currentBook = state.bookName;
+        const currentBook = bookName ? bookName : "testing";
         const bookAPIAccess = new URL("https://openlibrary.org/search.json?");
         const currentBookSplit = currentBook.replace(" ", "+");
-        const bookAPIAccessParams = new URLSearchParams(bookAPIAccess.search)
+        const bookAPIAccessParams = new URLSearchParams(bookAPIAccess.search);
 
-        bookAPIAccessParams.set("title", currentBookSplit)
+        bookAPIAccessParams.set("title", currentBookSplit);
         bookAPIAccess.search = bookAPIAccessParams;
 
 
@@ -39,11 +39,13 @@ function Book() {
                 let imageURL = `https://covers.openlibrary.org/b/olid/${id}-M.jpg`;
                 let bookURL = `https://openlibrary.org/works/${id}/${bookName}`;
                 return (
-                    <div className="books-individual" key={id + "div"}>
-                        <img key={id} className="images" src={imageURL} onClick={() => window.open(bookURL)} />
-                        <p className="bookName" onClick={() => window.open(bookURL)}>
-                            {bookName}
-                        </p>
+                    <div className="books-individual" key={id + "div"} data-testid="book-grid">
+                        <a href={bookURL} style={{textDecoration: 'none'}}>
+                            <img key={id} className="images" src={imageURL} />
+                            <p className="bookName">
+                                {bookName}
+                            </p>
+                        </a>
                     </div>
                 )
             })
@@ -52,13 +54,13 @@ function Book() {
         }
 
         const fetchBook = async (url) => {
-            let fetched = await fetchContent(url);
+            let fetched = await fetchContent(url);;
             let bookNames = getBookProperty(fetched, pageNumber, pageNumber + 7, 'title');
             let bookImages = getBookProperty(fetched, pageNumber, pageNumber + 7, 'cover_edition_key');
             let combined = getItems(bookImages, bookNames);
 
             setResult(combined);
-            setFetched(fetched)
+            setFetched(fetched);
         }
         
         fetchBook(bookAPIAccess);
@@ -78,4 +80,4 @@ function Book() {
     )
 }
 
-export default Book
+export default Book;

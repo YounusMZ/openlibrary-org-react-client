@@ -1,25 +1,18 @@
-import Trending from '../TrendingBooks/trendingbooks.js'
-import './home.css'
-import { useState } from 'react'
-import Book from '../Book/book.js'
-import SearchIcon from './search.png'
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import './home.css';
+import SearchIcon from './search.png';
+import { Outlet, useNavigate } from 'react-router';
 
 function Home() { 
     const navigate = useNavigate();
 
     const searchBook = () => {
         let searchText = document.getElementById("sideBar-search");
-        navigate("/book", {state : {bookName : searchText.value}})
-    }
-
-    const onSearchClick = () => {
-        searchBook()
+        navigate("/book", {state: {bookName: searchText.value}});
     }
 
     const onSearchEnterPress = (event) => {
         if (event.key == "Enter"){
-            searchBook()
+            searchBook();
         }
     }
 
@@ -29,11 +22,11 @@ function Home() {
             <div className="sideBar">
                 <div className="search">
                     <input type="text"  id="sideBar-search" placeholder="Search" onKeyUp={(event) => onSearchEnterPress(event)}/>
-                    <input type="image" id="sideBar-button" src={SearchIcon} onClick={onSearchClick}/>
+                    <input type="image" id="sideBar-button" src={SearchIcon} onClick={() => { searchBook() }}/>
                 </div>
             </div>
         </div>
     )
 }
 
-export default Home
+export default Home;
